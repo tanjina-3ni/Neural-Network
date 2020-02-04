@@ -23,20 +23,37 @@ def outputPlot(weight,noOfrow,noOfcol):
         circle = mpatches.Ellipse(xy, c, c, color = color) #to draw circle
         plt.gca().add_patch(circle)
     plt.show()
+    
 
 
 def train(noOfpatterns,patterns,weight):
     
-    eta=0.3
-    for i in range(100):
+    eta=0.5
+    distance = []
+    L=np.exp(-t/100)
+    ind=0
+    for j in range(100):
         for i in np.random.permutation(noOfpatterns):
             inputs = patterns[i,:]
+            #print inputs
+            #mini=0
             distance = np.sqrt(np.power(inputs-weight,2).sum(axis=1))
-            winner = distance.argmin()
+#            for x in distance:
+#                print distance[x]
+#                if (distance[x]<mini):
+#                    mini=distance[x]
+#                    ind=x
+#            print (mini,ind)
+            #print distance
+            #winner = distance.argmin()
+            #
+            # winner=np.where(distance==distance.min)
+            #print (winner)
+            winner=min(distance)
+            #print (winner)
             weight=weight+eta*(inputs-weight)
     return weight
         
-   
            
 
 
