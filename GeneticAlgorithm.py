@@ -63,7 +63,22 @@ def RouletteWheelSelection(population):
     return i # selected chromosome
     
 
-#def onepointCrossover:
+def onepointCrossover(population):
+    a=rand.randint(0,7)
+    b=rand.randint(0,8)
+    c=rand.randint(0,7)
+    temp=0
+    for i in range(b+1,9):
+         temp=population[a][i]
+         population[a][i]=population[c][i]
+         population[c][i]=temp
+    
+    
+    
+    
+    #print a,b,c
+    
+    return population
     
 
 #def bitFlipMutation:
@@ -71,7 +86,9 @@ def RouletteWheelSelection(population):
 
 i=3
 population=initialPopulation
+print population
 print initialPopulation[i]
 print profit[i]
 print weight[i]
 print RouletteWheelSelection(population)
+print onepointCrossover(population)
