@@ -91,11 +91,26 @@ def bitFlipMutation(population):
     return population
     
 
-i=3
+#i=3
+#population=initialPopulation
+#print population
+#print initialPopulation[i]
+#print profit[i]
+#print weight[i]
+#print RouletteWheelSelection(population)
+#print onepointCrossover(population)
+
 population=initialPopulation
 print population
-print initialPopulation[i]
-print profit[i]
-print weight[i]
-print RouletteWheelSelection(population)
-print onepointCrossover(population)
+max_value=0
+
+for i in range(0, 10000):
+    value = RouletteWheelSelection(population)
+    if value > max_value:
+        max_value = value
+
+    population = onepointCrossover(population)
+    if i%1000 == 0:
+        population = bitFlipMutation(population)
+
+print("Maximum Value of f(x) =" ,fitness(max_value), " where x = ", max_value, ".");
