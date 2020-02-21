@@ -73,15 +73,22 @@ def onepointCrossover(population):
          population[a][i]=population[c][i]
          population[c][i]=temp
     
-    
-    
+      
     
     #print a,b,c
     
     return population
     
 
-#def bitFlipMutation:
+def bitFlipMutation(population):
+    a = rand.randint(0, 7)
+    b = rand.randint(0, 8)
+    if population[a][b] == 0 :
+        population[a][b] = 1
+    else:
+        population[a][b] = 0
+        
+    return population
     
 
 i=3
