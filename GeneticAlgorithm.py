@@ -5,6 +5,7 @@ Created on Fri Feb 21 14:17:35 2020
 @author: Aspire
 """
 import numpy as np
+import random as rand
                            #col0 1 2 3 4 5 6 7 8
 initialPopulation = np.array([[0,1,0,1,0,1,0,1,1], #row0
                               [0,1,1,1,1,1,0,1,0],    #1
@@ -25,7 +26,7 @@ profit = np.array([[2,1,4,5,0,1,3,5,10], #row0
                    [1,6,4,0,10,5,1,0,1],    #6 
                    [1,10,1,5,4,5,0,5,0]])   #7
 
-                #col0 1 2 3 4 5 6 7 8
+                  #col0 1 2 3 4 5 6 7 8
 weight = np.array([[20,1,0,1,15,1,0,10,1], #row0
                    [0,10,1,1,15,1,0,4,12],    #1
                    [0,15,0,10,1,5,0,1,20],    #2
@@ -34,21 +35,43 @@ weight = np.array([[20,1,0,1,15,1,0,10,1], #row0
                    [6,12,10,1,0,1,20,1,5],    #5 
                    [15,10,1,0,1,0,1,0,15],    #6 
                    [12,1,15,1,1,0,5,20,6]])   #7
-
+ftness=[0,0,0,0,0,0,0,0]
 def fitness(i):
-    ftness = profit[i]*weight[i]
-    return ftness
+    for j in range(0,8):
+        ft=0
+        for k in range(0,9):
+             ft=ft+ profit[j][k]*weight[j][k]
+        #print k
+        ftness[j]=ft
+        
+    
+    return ftness[i]
     
 
-#def RouletteWheelSelection:
+def RouletteWheelSelection(population):
+    S=0
+    for i in range(0,8):
+        #print i
+        S=S+fitness(i)
+    R=rand.randint(0,S)
+    
+    csum=0
+    for i in range(0,8):
+        if csum<R:
+            csum=csum+fitness(i)
+    
+    return i # selected chromosome
     
 
 #def onepointCrossover:
     
 
 #def bitFlipMutation:
+    
+
 i=3
+population=initialPopulation
 print initialPopulation[i]
 print profit[i]
 print weight[i]
-print fitness(i)
+print RouletteWheelSelection(population)
