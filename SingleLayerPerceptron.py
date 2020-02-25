@@ -33,16 +33,15 @@ s=0
 
     #print y
     #print m
-#while (dt!=y):
-for i in range(0,17):
-        s+=x1[i]*w[i]+x2[i]*w[i]
-        y.append(s)
-        #m.append(i)
-for i in range(0,17):
-        delta.append(dt[i]-y[i])
-for i in range(0,17):
-        w[i]=w[i]+delta[i]        
-    
+while (dt!=y):
+    for i in range(0,17):
+            s+=x1[i]*w[i]+x2[i]*w[i]
+            y.append(s)
+            #m.append(i)
+    for i in range(0,17):
+            delta.append(dt[i]-y[i])
+    for i in range(0,17):
+            w[i]=w[i]+delta[i]  
     
     
 #print delta
